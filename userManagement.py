@@ -18,8 +18,11 @@ getUrl = input("Enter the url: ")
 
 driver.get(getUrl)
 
+print(driver.current_url)
+print(driver.title)
+
 try:
-    username_field = driver.find_element(by=By.XPATH, value="")
+    username_field = driver.find_element(by=By.XPATH, value="//input[@name='username']")
     if username_field:
         print("Username field found.")
 except NoSuchElementException:
@@ -30,7 +33,7 @@ try:
     if email_field:
         print("Email field found.")
 except NoSuchElementException:
-    print("Username field is not found.")
+    print("Email field not found.")
 
 try:
     submit_button = driver.find_element(by=By.XPATH, value="//input[@type='submit']")
@@ -50,8 +53,11 @@ def askInfo():
 def action(username, email):
     username_field.send_keys(username)
     email_field.send_keys(email)
-    submit_button.click()
-    print("Added user succesfully.")
+    if submit_button:
+        submit_button.click()
+        print("Added user succesfully.")
+    else:
+        print("No submit button found.")
 
 def validate_email(email):  
     if re.match(r"[^@]+@[^@]+\.[^@]+", email):  
