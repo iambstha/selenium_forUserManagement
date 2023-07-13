@@ -53,12 +53,14 @@ def askInfo():
 def action(username, email):
     username_field.send_keys(username)
     email_field.send_keys(email)
-    if submit_button:
-        submit_button.click()
-        print("Added user succesfully.")
-    else:
-        print("No submit button found.")
-    driver.close()
+    try:
+        if submit_button:
+            submit_button.click()
+            print("Added user succesfully.")
+        else:
+            print("No submit button found.")
+    finally:
+        driver.close()
 
 def validate_email(email):  
     if re.match(r"[^@]+@[^@]+\.[^@]+", email):  

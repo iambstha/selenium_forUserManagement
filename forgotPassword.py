@@ -60,6 +60,8 @@ def action(email):
             print("Submit button clicked.")
     except:
         print("Some error.")
+    finally:
+        driver.close()
     
     # try:
     #     check_sent_status = driver.find_element(by=By.XPATH, value="<XPATH Here>")
@@ -68,6 +70,6 @@ def action(email):
     # except NoSuchElementException:
     #     print('Error: Email doesnot exist.')
 
-    driver.close()
-    
+
+
 askInfo()

@@ -78,7 +78,7 @@ def findComponents(username,password):
             print("Successfully logged in.") 
     except NoSuchElementException:
         print('Error: Username or password doesnot match!!!')
-    
-    driver.close()
-    
+    finally:
+        driver.close()
+
 askInfo()
