@@ -13,11 +13,11 @@ opt.add_argument("--headless")
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=opt)
 driver.implicitly_wait(2)
 
-fname_xpath = ''
-lname_xpath = ''
-email_xpath = ''
-status_xpath = ''
-submit_xpath = ''
+fname_xpath = "//input[@name='fname']"
+lname_xpath = "//input[@name='lname']"
+email_xpath = "//input[@type='email']"
+status_xpath = "//select[@id='select']"
+submit_xpath = "//input[@type='submit']"
 
 
 getUrl = input("Enter the url: ")
@@ -25,81 +25,85 @@ getUrl = input("Enter the url: ")
 driver.get(getUrl)
 
 try:
-    submit_button = driver.find_element(by=By.XPATH, value="//input[@type='submit']")
+    submit_button = driver.find_element(by=By.XPATH, value=submit_xpath)
     if submit_button:
         print("Submit button found.")
 except NoSuchElementException:
     print('Submit button not found.')
 
 try:
-    fname_field = driver.find_element(by=By.XPATH, value="//input[@name='fname']")
+    fname_field = driver.find_element(by=By.XPATH, value=fname_xpath)
     if fname_field:
         print("First name input field found.")
 except NoSuchElementException:
     print('First name input field not found.')
 
 try:
-    lname_field = driver.find_element(by=By.XPATH, value="//input[@name='lname']")
+    lname_field = driver.find_element(by=By.XPATH, value=lname_xpath)
     if lname_field:
         print("Last name input field found.")
 except NoSuchElementException:
     print('Last name input field not found.')
 
 try:
-    email_field = driver.find_element(by=By.XPATH, value="//input[@type='email']")
+    email_field = driver.find_element(by=By.XPATH, value=email_xpath)
     if email_field:
         print("Email input field found.")
 except NoSuchElementException:
     print('Email input field not found.')
 
 try:
-    status_id = driver.find_element(by=By.ID, value="select")
-    status = Select(status_id)
+    status_field = driver.find_element(by=By.XPATH, value=status_xpath)
+    status = Select(status_field)
     if status:
         print("Status field found.")
 except NoSuchElementException:
     print('Status field not found.')
 
+def validate_email(email):  
+    if re.match(r"[^@]+@[^@]+\.[^@]+", email):  
+        return True  
+    return False
 
 def askInfo():
     fname = input("Enter your first name: ")
     lname = input("Enter your last name: ")
     email= input("Enter your email address: ")
-    status_options = status.options
-    status_select = status.select_by_index(0)
-    fname_value = fname.__getattribute__('value')
-    lname_value = lname.__getattribute__('value')
-    email_value = email.__getattribute__('value')
-    status_value = status_select
+    i= input("Enter status number: ")
+    fname_field.send_keys(fname)
+    lname_field.send_keys(lname)
+    email_field.send_keys(email)
+    status.select_by_index(i)
+    status_select = status.first_selected_option
+    fname_value = fname_field.get_attribute('value')
+    lname_value = lname_field.get_attribute('value')
+    email_value = email_field.get_attribute('value')
+    status_value = status_select.text
 
     action(fname_value,lname_value,email_value,status_value)
 
 def action(fname_value,lname_value,email_value,status_value):
-    try:
-        if fname_value == '':
-            print("Empty first name.")
-        if lname_value == '':
-            print("Empty last name.")
-        if status_value == '':
-            print("Status not selected.")
-        if email_value == '':
-            print("Empty email address.")
+    if fname_value == '':
+        print("Empty first name.")
+    if lname_value == '':
+        print("Empty last name.")
+    if status_value == '':
+        print("Status not selected.")
+    if email_value == '':
+        print("Empty email address.")
+    else:
+        if validate_email(email_value):
+            print("Email address is validated.")
+            print(fname_value,lname_value,email_value,status_value)
         else:
-            if validate_email(email_value):
-                print("Email address is validated.")
-            else:
-                print("Incorrect email address format.")
-        if submit_button:
-            submit_button.click()
-            driver.save_screenshot("picture.png")
-            driver.close()
+            print("Incorrect email address format.")
+    try:
+        submit_button.click()
+        print("Submit button clicked!")
+        driver.save_screenshot("picture.png")
+        driver.close()
     except:
-        print("Completed task. ")
-    driver.close()
+        print("Some error. ")
+    driver.quit()
 
-
-
-def validate_email(email):  
-    if re.match(r"[^@]+@[^@]+\.[^@]+", email):  
-        return True  
-    return False 
+askInfo()
