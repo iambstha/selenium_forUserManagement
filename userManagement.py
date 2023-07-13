@@ -18,17 +18,12 @@ getUrl = input("Enter the url: ")
 
 driver.get(getUrl)
 
-def validate_email(email):  
-    if re.match(r"[^@]+@[^@]+\.[^@]+", email):  
-        return True  
-    return False  
-
 try:
     username_field = driver.find_element(by=By.XPATH, value="")
     if username_field:
         print("Username field found.")
 except NoSuchElementException:
-    print("Username field is not found.")
+    print("Username field not found.")
 
 try:
     email_field = driver.find_element(by=By.XPATH, value="//input[@type='email']")
@@ -57,3 +52,8 @@ def action(username, email):
     email_field.send_keys(email)
     submit_button.click()
     print("Added user succesfully.")
+
+def validate_email(email):  
+    if re.match(r"[^@]+@[^@]+\.[^@]+", email):  
+        return True  
+    return False  
