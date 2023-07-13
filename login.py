@@ -77,6 +77,7 @@ def findComponents(username,password):
     try:
         check_login_status = driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[2]/form/button")
         if check_login_status.text == 'Log out':
+            driver.save_screenshot("screenshot.png")
             print("Successfully logged in.") 
     except NoSuchElementException:
         print('Error: Username or password doesnot match!!!')
