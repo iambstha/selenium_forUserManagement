@@ -17,11 +17,19 @@ fname_xpath = ''
 lname_xpath = ''
 email_xpath = ''
 status_xpath = ''
+submit_xpath = ''
 
 
 getUrl = input("Enter the url: ")
 
 driver.get(getUrl)
+
+try:
+    submit_button = driver.find_element(by=By.XPATH, value="//input[@type='submit']")
+    if submit_button:
+        print("Submit button found.")
+except NoSuchElementException:
+    print('Submit button not found.')
 
 try:
     fname_field = driver.find_element(by=By.XPATH, value="//input[@name='fname']")
@@ -81,6 +89,10 @@ def action(fname_value,lname_value,email_value,status_value):
                 print("Email address is validated.")
             else:
                 print("Incorrect email address format.")
+        if submit_button:
+            submit_button.click()
+            driver.save_screenshot("picture.png")
+            driver.close()
     except:
         print("Completed task. ")
     driver.close()
