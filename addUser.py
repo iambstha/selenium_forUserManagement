@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import Select
-
+import random
 import re
 opt = Options()
 opt.add_argument("--headless")
@@ -98,7 +98,8 @@ def action(fname_value,lname_value,email_value,status_value):
         else:
             print("Incorrect email address format.")
     try:
-        driver.save_screenshot("picture.png")
+        
+        driver.save_screenshot("".join(["screenshot",str(random.randrange(1,10))]) + ".png")
         submit_button.click()
         print("Submit button clicked!")
         driver.close()

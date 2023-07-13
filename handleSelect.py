@@ -22,8 +22,7 @@ select_field = driver.find_element(by=By.XPATH, value=select_xpath)
 select_value = Select(select_field)
 
 
-select_value.select_by_index(2)  # Select the second option
-
+select_value.select_by_index(2) 
 
 selected_option = select_value.first_selected_option
 print("Selected Option:", selected_option.text)
