@@ -67,4 +67,7 @@ def action(email):
     #         print("Success.") 
     # except NoSuchElementException:
     #     print('Error: Email doesnot exist.')
+
+    driver.close()
+    
 askInfo()

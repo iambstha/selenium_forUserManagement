@@ -58,6 +58,7 @@ def action(username, email):
         print("Added user succesfully.")
     else:
         print("No submit button found.")
+    driver.close()
 
 def validate_email(email):  
     if re.match(r"[^@]+@[^@]+\.[^@]+", email):  
