@@ -73,7 +73,7 @@ def askInfo():
     fname_field.send_keys(fname)
     lname_field.send_keys(lname)
     email_field.send_keys(email)
-    status.select_by_index(i)
+    status.select_by_index(str(int(i) - 1))
     status_select = status.first_selected_option
     fname_value = fname_field.get_attribute('value')
     lname_value = lname_field.get_attribute('value')
