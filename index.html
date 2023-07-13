@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Hello world</h1>
-    <form action="">
-        <input type="text" name="fname">
-        <input type="text" name="lname">
-        <input type="email" name="email">
-        <select name="select" id="select">
-            <option value="One">One</option>
-            <option value="Two">Two</option>
-            <option value="Three">Three</option>
-        </select>
-        <input type="submit" value="Submit">
-    </form>
+<body class=" flex flex-col justify-center items-center p-4 ">
+    <h1 class=" text-2xl p-2 ">Sample form</h1>
+    <div class=" flex justify-center items-center ">
+        <form action="" class=" flex flex-col w-96 gap-4 ">
+            <input type="text" name="fname" class=" border border-slate-300 h-10 p-2 " placeholder="First name">
+            <input type="text" name="lname" class=" border border-slate-300 h-10 p-2 " placeholder="Last name">
+            <input type="email" name="email" class=" border border-slate-300 h-10 p-2 " placeholder="Email address">
+            <select name="select" id="select" class=" border border-slate-300 h-10 p-2 " >
+                <option value="One">One</option>
+                <option value="Two">Two</option>
+                <option value="Three">Three</option>
+            </select>
+            <input type="submit" value="Submit" class="flex justify-center items-center outline-none bg-orange-400 h-10 p-2 cursor-pointer font-semibold text-lg  ">
+        </form>
+    </div>
 </body>
 </html>

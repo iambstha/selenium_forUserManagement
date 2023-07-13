@@ -98,9 +98,9 @@ def action(fname_value,lname_value,email_value,status_value):
         else:
             print("Incorrect email address format.")
     try:
+        driver.save_screenshot("picture.png")
         submit_button.click()
         print("Submit button clicked!")
-        driver.save_screenshot("picture.png")
         driver.close()
     except:
         print("Some error. ")
