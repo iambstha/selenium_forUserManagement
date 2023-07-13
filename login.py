@@ -11,6 +11,8 @@ opt.add_argument("--headless")
 # opt.add_argument("--start-maximized")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=opt)
+# driver = webdriver.Edge()
+driver.maximize_window()
 driver.implicitly_wait(5)
 
 getUrl = input("Enter the login page url: ")
