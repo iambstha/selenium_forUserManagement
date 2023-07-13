@@ -93,7 +93,7 @@ def action(fname_value,lname_value,email_value,status_value):
         print("Empty email address.")
     else:
         if validate_email(email_value):
-            print("Email address is validated.")
+            print("Email address is properly formated.")
             print(fname_value,lname_value,email_value,status_value)
         else:
             print("Incorrect email address format.")
