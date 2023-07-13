@@ -34,7 +34,7 @@ try:
         else:
             print("Alert: Password is not hidden.")
     if submit_field:
-        print("Submit field found.")
+        print("Submit button found.")
 except:
     print("Error: Username, password or submit field not found.")
 
