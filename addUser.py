@@ -99,7 +99,7 @@ def action(fname_value,lname_value,email_value,status_value):
             print("Incorrect email address format.")
     try:
         
-        driver.save_screenshot("".join(["screenshot",str(random.randrange(1,10))]) + ".png")
+        driver.save_screenshot("".join(["screenshot",str(random.randrange(1,1000))]) + ".png")
         submit_button.click()
         print("Submit button clicked!")
         driver.close()
