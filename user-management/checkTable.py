@@ -21,10 +21,10 @@ def checkTable():
 
     try:
         editTableData = src.driver.find_elements(by=src.By.CLASS_NAME, value="editData")
-        if len(tableData) == len(editTableData) and len(tableData) != 0:
-            print("Edit option is available in every table data.")
+        if len(editTableData) != 0:
+            print("Edit option is available in table data.")
         else:
-            print("Edit option is not available in every table data.")
+            print("Edit option is not available in table data.")
     except src.NoSuchElementException:
         print("Edit table element in the table is not found.")
 

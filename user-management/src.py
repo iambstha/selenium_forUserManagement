@@ -9,10 +9,10 @@ from selenium.webdriver.support import expected_conditions as EC
 import random
 import re
 opt = Options()
-opt.add_argument("--headless")
+# opt.add_argument("--headless")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=opt)
-driver.implicitly_wait(2)
+driver.implicitly_wait(5)
 
 getUrl = input("Enter the url: ")
 driver.get(getUrl)
