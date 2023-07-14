@@ -8,7 +8,6 @@ from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 import re
-from func import sample
 opt = Options()
 opt.add_argument("--headless")
 

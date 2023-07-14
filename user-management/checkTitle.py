@@ -1,6 +1,6 @@
 import src
 
-def checkTitleFunc(title):
+def checkTitle(title):
     wait = src.WebDriverWait(src.driver, 10)
 
     title_element = wait.until(src.EC.presence_of_element_located((src.By.TAG_NAME, "title")))
