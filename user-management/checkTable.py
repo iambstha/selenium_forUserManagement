@@ -37,3 +37,23 @@ def checkTable():
     except src.NoSuchElementException:
         print("No filter option element found.")
 
+    try:
+        searchField = src.driver.find_element(by=src.By.XPATH, value="//input[@type='search']")
+        if searchField:
+            print("Search field found.")
+    except src.NoSuchElementException:
+        print("Search field not found.")
+
+    try:
+        searchButton = src.driver.find_element(by=src.By.XPATH, value="//input[@type='submit']")
+        if searchButton:
+            print("Search button found.")
+    except src.NoSuchElementException:
+        print("Search element not found.")
+
+    try:
+        resetFilter = src.driver.find_element(by=src.By.XPATH, value="//input[@id='resetFilter']")
+        if resetFilter:
+            print("Reset filter found.")
+    except src.NoSuchElementException:
+        print("Reset filter not found.")
